@@ -12,14 +12,19 @@ rescue LoadError
 end
 
 Bundler.require
+
+require 'mp3_cropper/models/recording'
+require 'mp3_cropper/models/duration'
+
+require 'mp3_cropper/workers/worker'
+require 'mp3_cropper/server'
+
+
 # ====================
 # = Datamapper Setup =
 # ====================
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'mysql://localhost/mp3_cropper')
+DataMapper.auto_upgrade!
 
 
-require 'mp3_cropper/models/recording'
-require 'mp3_cropper/models/duration'
-require 'mp3_cropper/workers/worker'
-require 'mp3_cropper/server'

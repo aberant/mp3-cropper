@@ -1,6 +1,8 @@
-class Recording
-  include DataMapper::Resource
+module Mp3Cropper
+  class Recording
+    include DataMapper::Resource
 
-  property :id,     Serial
-  property :name,   String
+    property :id,     Serial
+    property :name,   String
+  end
 end
