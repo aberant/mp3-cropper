@@ -20,5 +20,6 @@ DataMapper.setup(:default, 'mysql://localhost/mp3_cropper')
 
 
 require 'mp3_cropper/models/recording'
+require 'mp3_cropper/models/duration'
 require 'mp3_cropper/workers/worker'
 require 'mp3_cropper/server'
