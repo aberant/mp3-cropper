@@ -1,0 +1,23 @@
+--- 
+specs: 
+- rspec: 
+    version: 1.3.0
+- extlib: 
+    version: 0.9.14
+- addressable: 
+    version: 2.1.1
+- dm-core: 
+    version: 0.10.2
+hash: 30222be59fa74d1a01bbe5f6349f8b6e00750463
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
+dependencies: 
+  rspec: 
+    version: ">= 0"
+    group: 
+    - :test
+  dm-core: 
+    version: ">= 0"
+    group: 
+    - :default
