@@ -11,13 +11,14 @@ rescue LoadError
   Bundler.setup
 end
 
+Bundler.require
 # ====================
 # = Datamapper Setup =
 # ====================
-require 'dm-core'
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'mysql://localhost/mp3_cropper')
 
 
 require 'mp3_cropper/models/recording'
 require 'mp3_cropper/workers/worker'
+require 'mp3_cropper/server'
