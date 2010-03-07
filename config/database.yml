@@ -1,0 +1,5 @@
+test:
+  db_name: mp3_cropper_test
+
+development:
+  db_name: mp3_cropper_development

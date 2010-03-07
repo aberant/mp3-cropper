@@ -1,3 +1,5 @@
+require 'yaml'
+
 # =================
 # = Bundler setup =
 # =================
@@ -23,8 +25,11 @@ require 'mp3_cropper/server'
 # ====================
 # = Datamapper Setup =
 # ====================
+config = YAML.load( File.open( File.dirname(__FILE__) + "/../config/database.yml" ) )
+environment = ENV['APP_ENV'] || "development"
+
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'mysql://localhost/mp3_cropper')
+DataMapper.setup(:default, "mysql://localhost/#{config[environment]["db_name"]}")
 DataMapper.auto_upgrade!
 
 
