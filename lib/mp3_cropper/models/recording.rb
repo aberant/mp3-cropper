@@ -11,7 +11,7 @@ module Mp3Cropper
     property :id,         Serial
     property :name,       String
     property :file_path,  String
-    
+
     is :state_machine, :initial => :imported, :column => :status do
       state :imported
       state :cropped
@@ -23,7 +23,7 @@ module Mp3Cropper
       glob = LOCATIONS[:raw] + "/**/*.mp3"
 
       Dir[glob].each do |file|
-        Mp3Cropper::Recording.create( :name => File.basename( file ))
+        Mp3Cropper::Recording.create( :name => File.basename( file ), :file_path => file )
         FileUtils.mv( file, LOCATIONS[:imported] )
       end
     end

@@ -10,7 +10,7 @@ describe Mp3Cropper::Recording do
     file_name = "bob.mp3"
     file_path = "/data/#{file_name}"
     Dir.should_receive( "[]" ).with(APP_ROOT + "/data/**/*.mp3").and_return( [file_path] )
-    Mp3Cropper::Recording.should_receive( :create ).with( :name => file_name )
+    Mp3Cropper::Recording.should_receive( :create )
     
     FileUtils.should_receive( :mv ).with( file_path, Mp3Cropper::Recording::LOCATIONS[:imported] )
     

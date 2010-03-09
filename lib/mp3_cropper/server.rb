@@ -15,12 +15,11 @@ module Mp3Cropper
     get "/mp3/:id" do
       @recording = Recording.get( params[:id] )
       redirect "/" unless @recording
-      raise @recording.name.inspect
-      send_file @recording.name, :type => "audio/mpeg"
+      send_file @recording.file_path, :type => "audio/mpeg"
     end
 
     get "/" do
-      @recordings = Recording.raw
+      @recordings = Recording.imported
       erb :index
     end
 
