@@ -12,7 +12,5 @@ end
 
 desc "task to import the new files"
 task :import do
-  Dir["data/**/*.mp3"].each do |file|
-    Mp3Cropper::Recording.create( :name => file )
-  end
+  Mp3Cropper::Recording.import!
 end

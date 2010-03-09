@@ -14,11 +14,15 @@ rescue LoadError
 end
 
 Bundler.require
+APP_ROOT =  File.dirname(__FILE__) + "/.."
 
 require 'mp3_cropper/models/recording'
 require 'mp3_cropper/models/duration'
+require 'mp3_cropper/models/mp3_processor'
 
-require 'mp3_cropper/workers/worker'
+require 'mp3_cropper/workers/worker_base'
+require 'mp3_cropper/workers/cropper'
+
 require 'mp3_cropper/server'
 
 
@@ -28,7 +32,7 @@ require 'mp3_cropper/server'
 config = YAML.load( File.open( File.dirname(__FILE__) + "/../config/database.yml" ) )
 environment = ENV['APP_ENV'] || "development"
 
-DataMapper::Logger.new($stdout, :debug)
+DataMapper::Logger.new($stdout, :error)
 DataMapper.setup(:default, "mysql://localhost/#{config[environment]["db_name"]}")
 DataMapper.auto_upgrade!
 

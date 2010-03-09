@@ -1,20 +1,35 @@
+require 'fileutils'
+
 module Mp3Cropper
   class Recording
     include DataMapper::Resource
 
-    property :id,     Serial
-    property :name,   String
+    LOCATIONS = { :raw => APP_ROOT + "/data",
+                  :imported => APP_ROOT + "/data/imported",
+                  :cropped => APP_ROOT + "/data/cropped" }
 
-    is :state_machine, :initial => :raw, :column => :status do
-      state :raw
+    property :id,         Serial
+    property :name,       String
+    property :file_path,  String
+    
+    is :state_machine, :initial => :imported, :column => :status do
+      state :imported
       state :cropped
       state :converted
       state :uploaded
     end
 
+    def self.import!
+      glob = LOCATIONS[:raw] + "/**/*.mp3"
 
-    def self.raw
-      all(:status => "raw")
+      Dir[glob].each do |file|
+        Mp3Cropper::Recording.create( :name => File.basename( file ))
+        FileUtils.mv( file, LOCATIONS[:imported] )
+      end
+    end
+
+    def self.imported
+      all(:status => "imported")
     end
   end
 end
