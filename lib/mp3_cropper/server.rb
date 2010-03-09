@@ -32,8 +32,7 @@ module Mp3Cropper
     post "/crop/:id" do
       recording = Recording.get( params[:id])
       redirect "/" unless recording
-
-      Cropper.new.run!( recording.id, params )
+      Cropper.run!( recording.id, params[:mark_in], params[:mark_out] )
       redirect "/"
     end
   end
