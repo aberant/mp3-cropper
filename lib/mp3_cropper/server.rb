@@ -15,6 +15,7 @@ module Mp3Cropper
     get "/mp3/:id" do
       @recording = Recording.get( params[:id] )
       redirect "/" unless @recording
+
       send_file @recording.file_path, :type => "audio/mpeg"
     end
 

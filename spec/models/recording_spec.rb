@@ -16,4 +16,14 @@ describe Mp3Cropper::Recording do
     
     Mp3Cropper::Recording.import!
   end
+      
+  it "file path should reflect an imported state" do
+    r = Mp3Cropper::Recording.create( :name => "bob" )
+    r.file_path.should == Mp3Cropper::Recording::LOCATIONS[:imported] + "/#{r.name}"
+  end
+  
+  it "file path should reflect an imported state" do
+    r = Mp3Cropper::Recording.create( :name => "bob", :status => "cropped")
+    r.file_path.should == Mp3Cropper::Recording::LOCATIONS[:cropped] + "/#{r.name}"
+  end
 end

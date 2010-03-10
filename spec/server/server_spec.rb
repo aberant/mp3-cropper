@@ -7,7 +7,7 @@ describe Mp3Cropper::Server do
     @app ||= Mp3Cropper::Server
   end
   before :each do
-    @recording = Mp3Cropper::Recording.create(:name => "test-name.mp3", :file_path => "/data/test-name.mp3")
+    @recording = Mp3Cropper::Recording.create(:name => "test-name.mp3")
   end
   
   it "should list the newly created recordings" do

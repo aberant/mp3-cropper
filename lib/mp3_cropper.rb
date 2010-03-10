@@ -34,6 +34,7 @@ environment = ENV['APP_ENV'] || "development"
 
 DataMapper::Logger.new($stdout, :error)
 DataMapper.setup(:default, "mysql://localhost/#{config[environment]["db_name"]}")
-DataMapper.auto_upgrade!
+# DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 
