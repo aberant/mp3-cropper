@@ -6,4 +6,4 @@ simple web front end for cropping mp3s
 
 === Usage
 
-	ruby script/server
+	script/server
