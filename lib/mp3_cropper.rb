@@ -13,7 +13,9 @@ rescue LoadError
   Bundler.setup
 end
 
+require 'dm-core'
 Bundler.require
+
 APP_ROOT =  File.dirname(__FILE__) + "/.."
 
 require 'mp3_cropper/models/recording'

@@ -9,8 +9,7 @@ describe Mp3Cropper::Recording do
   it "should be able to import new recordings into the system" do
     file_name = "bob.mp3"
     file_path = "/data/#{file_name}"
-    Dir.should_receive( "[]" ).with(APP_ROOT + "/data/**/*.mp3").and_return( [file_path] )
-    Mp3Cropper::Recording.should_receive( :create )
+    Dir.should_receive( "[]" ).with(APP_ROOT + "/data/*.mp3").and_return( [file_path] )
     
     FileUtils.should_receive( :mv ).with( file_path, Mp3Cropper::Recording::LOCATIONS[:imported] )
     
