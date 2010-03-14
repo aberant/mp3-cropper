@@ -1,0 +1,9 @@
+= Mp3 Cropper
+
+== Description
+
+simple web front end for cropping mp3s 
+
+=== Usage
+
+	ruby script/server
